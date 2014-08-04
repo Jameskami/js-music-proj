@@ -1,0 +1,21 @@
+.scale {
+	position: relative;
+	width: 625px;
+	height: 50px;
+	background-color: rgb(50,150,150);
+}
+.triad {
+	margin: 25px;
+	position: relative;
+	width: 275px;
+	height: 25px;
+	background-color: rgb(50,150,150);
+}
+.box {
+	width: 21px;
+	height: 21px;
+	background-color: rgb(50,50,50);
+	/* position: absolute; */
+	float: left;
+	margin: 2px;
+}

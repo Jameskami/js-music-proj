@@ -47,7 +47,7 @@ var Notes = {
         {
            temp[i] = 440.0 * Math.pow(a,i-45);
         } 
-        noteStream = temp;
+        this.noteStream = temp;
     },
     setNotesByOctave : function(){}
 }
@@ -64,7 +64,7 @@ var Harmony = function(){
     // the scale 
     this.scale = [];
     
-    this.setScale = function(/*Notes*/ n, scalePattern, root) {
+    this.setScale = function(/*Notes*/n, scalePattern, root) {
         var temp = [];
         var count = 0;
         for(var i = 0; i < n.noteStream.length; i++) {
@@ -73,7 +73,7 @@ var Harmony = function(){
             }
         }
         this.scale = temp;
-        this.setChords(scale);
+        this.setChords(this.scale);
     }
     this.setChords = function(mode) {
         var temp1 = [];
@@ -83,13 +83,13 @@ var Harmony = function(){
         var temp5 = [];
         var temp6 = [];
         var temp7 = [];
-        var one;
-        var two;
-        var three;
-        var four;
-        var five;
-        var six;
-        var seven;
+        var one = 0;
+        var two = 0;
+        var three = 0;
+        var four = 0;
+        var five = 0;
+        var six = 0;
+        var seven = 0;
         for(var i = 24-12; i < mode.length-12; i++) {
             //I see no switch statement in docs for chucK
             if(i%7 == 0)
@@ -198,26 +198,14 @@ var Harmony = function(){
                 }
             }
         }
-         I = temp1; 
-         II = temp2; 
-         III = temp3; 
-         IV = temp4; 
-         V = temp5; 
-         VI = temp6; 
-         VII = temp7; 
+		  console.log(temp1);
+         this.I = temp1; 
+         this.II = temp2; 
+         this.III = temp3; 
+         this.IV = temp4; 
+         this.V = temp5; 
+         this.VI = temp6; 
+         this.VII = temp7; 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
