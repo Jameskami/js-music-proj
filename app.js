@@ -1,9 +1,12 @@
 var musicApp = angular.module('musicApp', []);
 
-musicApp.controller('dom', ['$scope', function($scope){
+musicApp.controller('dom', ['$scope', function($scope){	
+	MusicMaker.setGain(0.5);
 	Notes.setNoteStream();
 	var harmony = new Harmony();
-	harmony.setScale(Notes, Notes.major, 4);
+	$scope.mode =["major"];
+	harmony.setScale(Notes, Notes[$scope.mode[0]], 4);
+	$scope.waveForm = ["sine", "square", "sawtooth", "triangle"];
 	$scope.scaleIndex = [];
 	$scope.I = [];
 	$scope.II = [];
@@ -15,7 +18,8 @@ musicApp.controller('dom', ['$scope', function($scope){
 	for(var i = 0; i < harmony.scale.length; i++) {
 		$scope.scaleIndex[i] = i;
 	}
-	for(var i = 0; i < harmony.I.length; i++) {
+	//not all are the same length, resulting in default tones. That is why length - 2, to eliminate them
+	for(var i = 0; i < harmony.I.length-2; i++) {
 		$scope.I[i] = i;
 		$scope.II[i] = i;
 		$scope.III[i] = i;
@@ -48,17 +52,10 @@ musicApp.controller('dom', ['$scope', function($scope){
 	$scope.playVIINotes = function(note) {
 		MusicMaker.oscHandler(harmony.VII[note]);
 	}
+	$scope.setVolume = function() {
+		var value = $('#volume').val();
+		console.log(value);
+		MusicMaker.setGain(value);
+	}
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
 

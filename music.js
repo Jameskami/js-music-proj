@@ -1,13 +1,20 @@
 var MusicMaker = {
 	ctx : new (window.AudioContext || window.webkitAudioContext)(),
 	osc : [],
+	gainNode : {},
 	oscMaker : function(hertz) {
 	  var index = this.osc.length;
 	  this.osc[index] = this.ctx.createOscillator();
+	  this.osc[index].connect(gainNode);
+	  gainNode.connect(this.ctx.destination);
 	  this.osc[index].frequency.value = hertz;
-	  this.osc[index].connect(this.ctx.destination);
+	  //this.osc[index].connect(this.ctx.destination);
 	  this.osc[index].start();
 	  return index;
+	},
+	setGain : function(val) {
+		gainNode = this.ctx.createGain();
+		gainNode.gain.value = val;
 	},
 	oscHandler : function(hertz) {
 	  var index = this.oscMaker(hertz);
@@ -198,7 +205,6 @@ var Harmony = function(){
                 }
             }
         }
-		  console.log(temp1);
          this.I = temp1; 
          this.II = temp2; 
          this.III = temp3; 

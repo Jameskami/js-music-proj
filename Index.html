@@ -10,6 +10,8 @@
 	</head>
 	<body ng-app="musicApp">
 		<div ng-controller="dom">
+			volume:
+			<input ng-change="setVolume()" ng-model="a" id="volume" type="range" min="0" max="1" step="0.1" value="0.5"/>
 			<div class="scale">
 				<div ng-repeat="note in scaleIndex"><div id="{{note}}" class="box" ng-mouseover="playScaleNote(note)"></div></div>
 			</div>
