@@ -1,4 +1,5 @@
 .scale {
+	float: right;
 	position: relative;
 	width: 350px;
 	height: 100px;

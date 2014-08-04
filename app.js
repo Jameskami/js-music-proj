@@ -3,6 +3,17 @@ var musicApp = angular.module('musicApp', []);
 musicApp.controller('dom', ['$scope', function($scope){	
 	MusicMaker.setGain(0.5);
 	Notes.setNoteStream();
+	$scope.modeChange = [
+		{value : "major" , name : "major"},
+		{value : "minor", name : "minor"},
+		{value : "mHormonic", name : "harmonic minor"},
+		{value : "doubleHormonic", name : "double harmonic minor"},
+		{value : "mixolydian", name : "mixolydian"},
+		{value : "locrian", name : "locrian"},
+		{value : "phrygian", name : "phrygian"},
+		{value : "lydian", name : "lydian"},
+		{value : "dorian", name : "dorian"}
+	];
 	var harmony = new Harmony();
 	$scope.mode =["major"];
 	harmony.setScale(Notes, Notes[$scope.mode[0]], 4);
@@ -54,8 +65,11 @@ musicApp.controller('dom', ['$scope', function($scope){
 	}
 	$scope.setVolume = function() {
 		var value = $('#volume').val();
-		console.log(value);
 		MusicMaker.setGain(value);
+	}
+	$scope.newMode = function() {
+		var value = $('#mode').val();
+		harmony.setScale(Notes, Notes[value], 4);
 	}
 }]);
 

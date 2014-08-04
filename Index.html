@@ -12,29 +12,35 @@
 		<div ng-controller="dom">
 			volume:
 			<input ng-change="setVolume()" ng-model="a" id="volume" type="range" min="0" max="1" step="0.1" value="0.5"/>
+			Change Musical Mode:
+			<select ng-change="newMode()" ng-model="a" id="mode">
+				<option ng-repeat="mode in modeChange" value="{{mode.value}}">{{mode.name}}</option>
+			</select>
 			<div class="scale">
 				<div ng-repeat="note in scaleIndex"><div id="{{note}}" class="box" ng-mouseover="playScaleNote(note)"></div></div>
 			</div>
-			<div class="triad">
-				<div ng-repeat="note in I"><div id="{{note}}" class="box" ng-mouseover="playINotes(note)"></div></div>
-			</div>
-			<div class="triad">
-				<div ng-repeat="note in II"><div id="{{note}}" class="box" ng-mouseover="playIINotes(note)"></div></div>
-			</div>
-			<div class="triad">
-				<div ng-repeat="note in III"><div id="{{note}}" class="box" ng-mouseover="playIIINotes(note)"></div></div>
-			</div>
-			<div class="triad">
-				<div ng-repeat="note in IV"><div id="{{note}}" class="box" ng-mouseover="playIVNotes(note)"></div></div>
-			</div>
-			<div class="triad">
-				<div ng-repeat="note in V"><div id="{{note}}" class="box" ng-mouseover="playVNotes(note)"></div></div>
-			</div>
-			<div class="triad">
-				<div ng-repeat="note in VI"><div id="{{note}}" class="box" ng-mouseover="playVINotes(note)"></div></div>
-			</div>
-			<div class="triad">
-				<div ng-repeat="note in VII"><div id="{{note}}" class="box" ng-mouseover="playVIINotes(note)"></div></div>
+			<div>
+				<div class="triad">
+					<div ng-repeat="note in I"><div id="{{note}}" class="box" ng-mouseover="playINotes(note)"></div></div>
+				</div>
+				<div class="triad">
+					<div ng-repeat="note in II"><div id="{{note}}" class="box" ng-mouseover="playIINotes(note)"></div></div>
+				</div>
+				<div class="triad">
+					<div ng-repeat="note in III"><div id="{{note}}" class="box" ng-mouseover="playIIINotes(note)"></div></div>
+				</div>
+				<div class="triad">
+					<div ng-repeat="note in IV"><div id="{{note}}" class="box" ng-mouseover="playIVNotes(note)"></div></div>
+				</div>
+				<div class="triad">
+					<div ng-repeat="note in V"><div id="{{note}}" class="box" ng-mouseover="playVNotes(note)"></div></div>
+				</div>
+				<div class="triad">
+					<div ng-repeat="note in VI"><div id="{{note}}" class="box" ng-mouseover="playVINotes(note)"></div></div>
+				</div>
+				<div class="triad">
+					<div ng-repeat="note in VII"><div id="{{note}}" class="box" ng-mouseover="playVIINotes(note)"></div></div>
+				</div>
 			</div>
 		</div>
 	</body>
