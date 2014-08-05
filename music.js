@@ -71,12 +71,12 @@ var Harmony = function(){
     // the scale 
     this.scale = [];
     
-    this.setScale = function(/*Notes*/n, scalePattern, root) {
+    this.setScale = function(notes, scalePattern, root) {
         var temp = [];
         var count = 0;
-        for(var i = 0; i < n.noteStream.length; i++) {
-            if(scalePattern[(i + root) % 12] == 1) {
-                temp[count++] = n.noteStream[i];
+        for(var i = root, j = 0; i < notes.noteStream.length; i++, j++) {
+            if(scalePattern[j % 12] == 1) {
+                temp[count++] = notes.noteStream[i];
             }
         }
         this.scale = temp;

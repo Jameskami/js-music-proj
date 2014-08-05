@@ -14,9 +14,23 @@ musicApp.controller('dom', ['$scope', function($scope){
 		{value : "lydian", name : "lydian"},
 		{value : "dorian", name : "dorian"}
 	];
+	$scope.keyChange = [
+		{value : 0, name : "C"},
+		{value : 1, name : "C#"},
+		{value : 2, name : "D"},
+		{value : 3, name : "D#"},
+		{value : 4, name : "E"},
+		{value : 5, name : "F"},
+		{value : 6, name : "F#"},
+		{value : 7, name : "G"},
+		{value : 8, name : "G#"},
+		{value : 9, name : "A"},
+		{value : 10, name : "A#"},
+		{value : 11, name : "B"}
+	];
 	var harmony = new Harmony();
 	$scope.mode =["major"];
-	harmony.setScale(Notes, Notes[$scope.mode[0]], 4);
+	harmony.setScale(Notes, Notes[$scope.mode[0]], 0);
 	$scope.waveForm = ["sine", "square", "sawtooth", "triangle"];
 	$scope.scaleIndex = [];
 	$scope.I = [];
@@ -71,5 +85,9 @@ musicApp.controller('dom', ['$scope', function($scope){
 		var value = $('#mode').val();
 		harmony.setScale(Notes, Notes[value], 4);
 	}
+	$scope.setKey = function() {
+		var keyValue = $('#key').val();
+		var modeValue = $('#mode').val();
+		harmony.setScale(Notes, Notes[modeValue], keyValue);
+	}
 }]);
-

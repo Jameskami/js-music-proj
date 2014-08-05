@@ -13,8 +13,12 @@
 			volume:
 			<input ng-change="setVolume()" ng-model="a" id="volume" type="range" min="0" max="1" step="0.1" value="0.5"/>
 			Change Musical Mode:
-			<select ng-change="newMode()" ng-model="a" id="mode">
+			<select ng-change="newMode()" ng-model="b" id="mode">
 				<option ng-repeat="mode in modeChange" value="{{mode.value}}">{{mode.name}}</option>
+			</select>
+			Change Key:
+			<select ng-change="setKey()" ng-model="c" id="key">
+				<option ng-repeat="mode in keyChange" value="{{mode.value}}">{{mode.name}}</option>
 			</select>
 			<div class="scale">
 				<div ng-repeat="note in scaleIndex"><div id="{{note}}" class="box" ng-mouseover="playScaleNote(note)"></div></div>
